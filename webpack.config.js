@@ -1,4 +1,7 @@
 const path = require('path'); // Para trabajar con archivos y rutas de directorios
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'production', // le pasamos explícitamente el modo desde el archivo
@@ -12,5 +15,47 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js'] // LOS ARCHIVOS QUE WEBPACK VA A LEER
-    }
+    },
+    module: {
+        rules: [
+          {
+            // Test declara que extensión de archivos aplicara el loader
+            test: /\.js$/,
+            // Use es un arreglo u objeto donde dices que loader aplicaras
+            use: {
+              loader: "babel-loader"
+            },
+            // Exclude permite omitir archivos o carpetas especificas
+            exclude: /node_modules/
+          },
+          {
+            test: /\.(css|styl)$/i,
+            use: [
+              MiniCssExtractPlugin.loader,
+              "css-loader",
+              "stylus-loader"
+            ]
+          }
+    
+        ]
+      },
+      plugins: [
+        new HtmlWebpackPlugin({ // CONFIGURACIÓN DEL PLUGIN
+            inject: true, // INYECTA EL BUNDLE AL TEMPLATE HTML
+            template: './public/index.html', // LA RUTA AL TEMPLATE HTML
+            filename: './index.html' // NOMBRE FINAL DEL ARCHIVO
+        }),
+        new MiniCssExtractPlugin(),
+        new CopyPlugin({
+            patters: [
+              {
+                from: path.resolve(__dirname, "src", "assets/images"),
+                to: "assets/images"
+              }
+            ]
+          })      
+    ]
+
+    
 }
+
