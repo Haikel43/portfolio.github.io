@@ -35,7 +35,12 @@ module.exports = {
               "css-loader",
               "stylus-loader"
             ]
+          },
+          {
+            test: /\.png/,
+            type: "asset/resource"
           }
+    
     
         ]
       },
@@ -47,7 +52,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin(),
         new CopyPlugin({
-            patters: [
+            patterns: [
               {
                 from: path.resolve(__dirname, "src", "assets/images"),
                 to: "assets/images"

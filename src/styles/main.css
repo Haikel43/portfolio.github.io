@@ -1,0 +1,75 @@
+/*GENERAL*/
+:root {
+    --black: #1D1D1B;
+    /* --green: #7EF333; */
+    --green: #9CC11A;
+    --gris-claro: #4B4B4B;
+    --gris-oscuro: #323232;
+    --white: #ffffff;
+    --blue: #3ec1ca;
+    --yellow: #DABF07;
+    --xb: 60rem;
+    --bg: 30rem;
+    --md: 19rem;
+    --sm: 16rem;
+  }
+
+  html {
+    font-size: 6.25%;
+    margin: 0;
+  }
+  
+  body {
+    font-size: 16rem;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+/* SUPERIOR */
+
+.seccion-superior {
+  display: flex;
+  color: var(--white);
+  font-size: 36rem;
+ 
+}
+
+.columna-izq-superior{
+  background: var(--blue);
+  width: 50vw;
+  justify-content: center; /*centra a lo horizontal*/
+  align-items: center; /*centra a lo vertical*/
+  display: flex;
+}
+
+.text-container{
+  margin: 100rem;
+}
+
+.text-izq{
+  padding: 15rem;
+  border: var(--white) solid 3rem;
+}
+
+.columna-der-superior{
+  width: 50vw;
+  justify-content: center;
+}
+
+.columna-der-superior-top{
+  background-color: var(--yellow);
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.columna-der-superior-botton{
+  background: var(--green);
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
