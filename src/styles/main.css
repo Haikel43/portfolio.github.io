@@ -162,8 +162,6 @@ nav{
 .menu img{
   position:absolute;
   width: 64px;
-  /* display: block; */
-  left: 15rem;
 }
 
 .text-container{
@@ -172,9 +170,9 @@ nav{
 }
 
 .text-izq{
-  padding: 15rem;
+  padding: 20rem;
   border: var(--white) solid 3rem;
-}
+  }
 
 #fronted{
   text-align: right;
@@ -189,8 +187,19 @@ nav{
   background-color: var(--yellow);
   margin: 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   height: 50vh;
+}
+
+.img-sup-der {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.img-sup-der img{
+  width: 28vw;
+  position: absolute;
 }
 
 .about-me {
@@ -200,6 +209,7 @@ nav{
 
 #sobre-mi {
   text-align: right;
+  margin-left: -30rem;
 }
 
 .right { 
@@ -215,7 +225,7 @@ nav{
   margin: 0;
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 50vh;
 }
 
