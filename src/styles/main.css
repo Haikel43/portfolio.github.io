@@ -41,11 +41,18 @@
     font-weight: 700;
   }
 
+  a{
+    cursor:hand;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
   li{
     font-size: var(--md);
   }
 
-  .inactive {
+   .inactive {
     display: none;
   }
 
@@ -147,7 +154,8 @@ body::-webkit-scrollbar-thumb {
 
 .menu img{
   position:absolute;
-  margin: 16rem;
+  top: 16rem;
+  left: 16rem;
   width: 64px;
 }
 
@@ -159,6 +167,7 @@ body::-webkit-scrollbar-thumb {
 .text-izq{
   padding: 20rem;
   border: var(--white) solid 3rem;
+  margin: 0;
   }
 
 #fronted{
@@ -174,12 +183,14 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--yellow);
   margin: 0;
   display: flex;
-  justify-content: space-around;
   height: 50vh;
 }
 
 .text-container-sds {
   margin: 16rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .img-sup-der {
@@ -200,7 +211,7 @@ body::-webkit-scrollbar-thumb {
 
 #sobre-mi {
   text-align: right;
-  margin-left: 128rem;
+  margin-left: 15vw;
 }
 
 .right { 
@@ -262,33 +273,44 @@ body::-webkit-scrollbar-thumb {
 
 .contacto img {
   width: 64rem;
-  margin-top: 8rem;
+  height: 64rem;
+  /* margin-top: 8rem; */
 }
 
 /*MEDIO*/
 .seccion-media{
   display: flex;
-  height: 100vh;
+  height: 50vh;
   align-items: center;
   justify-content: center;
 }
 
-.seccion-media > div{
+.contenido-medio {
   display: flex;
+  align-items: center;
 }
 
 .titulo-tecnologia {
-  margin-left: 80rem;
-  margin-right: 30rem;
+  display: flex;
+  margin-left: 5vw;
+  margin-right: 3vw;
   width: 350rem;
 }
 
 .tecnologia {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .tecnologias img {
   width: 128rem;
+}
+
+.titulo-proyectos
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*PROYECTOS*/
@@ -330,8 +352,13 @@ body::-webkit-scrollbar-thumb {
     width: 100vw;
   }
 
+  .text-container-sds {
+    margin-right: 32px;
+    margin-left: 128px;
+  }
+
   .img-sup-der img {
-    width: 400px;
+    width: 50vw;
   }
 
   .contacto{
@@ -345,23 +372,22 @@ body::-webkit-scrollbar-thumb {
  }
 
  .contenido-medio {
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100vw;
  }
 
  .titulo-tecnologia {
-  margin: 0;
+  width: 100vw;
+  justify-content: center;
  }
 
- .tecnologias {
-  display: flex;
-  flex-wrap: wrap;
-  width: 50vw;
+ .titulo-tecnologia h2{
+  padding: 10px;
  }
-  
+
 .tecnologias img {
-  width: 64px;
+  width: 80px;
 }
 
 .proyectos {
