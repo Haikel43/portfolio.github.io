@@ -7,58 +7,55 @@
     --white: #ffffff;
     --blue: #0596a1;
     --yellow: #DABF07;
-    --xb: 60rem;
-    --bg: 30rem;
-    --md: 19rem;
-    --sm: 16rem;
+    --h1: 60rem;
+    --h2: 48rem;
+    --md: 16rem;
+    --sm: 12rem;
   }
 
   html {
     font-size: 6.25%;
-    margin: 0;
-    font-family: roboto, sans-serif;    
+    font-family: roboto, sans-serif;
   }
   
   body {
-    font-size: 16rem;
     margin: 0;
+    width: 100%;
   }
 
   p {
-    margin: 0;
-    font-size: 14rem;
+    font-size: var(--md);
     font-family: roboto, sans-serif;
     font-weight: 300;
   }
 
   h1 {
-    margin: 0;
-    font-size: 56rem;
+    font-size: var(--h1);
     font-family: Raleway, sans-serif;
     font-weight: 700;
   }
 
   h2 {
-    margin: 0;
-    font-size: 48rem;
+    font-size: var(--h2);
     font-family: Raleway, sans-serif;
     font-weight: 700;
   }
 
   li{
-    font-size: 16rem;
+    font-size: var(--md);
   }
 
   .inactive {
     display: none;
   }
+
 /*BARRA DE DESPLAZAMIENTO*/
 body::-webkit-scrollbar {
-  width: 10px;         /* width of the entire scrollbar */
+  width: 10px;     
 }
 
 body::-webkit-scrollbar-track {
-  background: var(--white);        /* color of the tracking area */
+  background: var(--white);
 }
 
 body::-webkit-scrollbar-thumb {
@@ -135,38 +132,28 @@ body::-webkit-scrollbar-thumb {
 
 
 /* SUPERIOR */
-
 .seccion-superior {
   display: flex;
   color: var(--white);
-  font-size: 36rem;
 }
 
 .columna-izq-superior{
   background: var(--blue);
   width: 50vw;
-  align-items: center; /*centra a lo vertical*/
+  align-items: center;
   display: grid;
   height: 100vh;
-  font-family: roboto;
 }
-
-nav{
-  display:grid;
-  grid-template-columns: 1fr auto;
-  position:absolute;
-  top: 15rem;
-  width:100%;
-  }
 
 .menu img{
   position:absolute;
+  margin: 16rem;
   width: 64px;
 }
 
-.text-container{
+.text-container-si{
   margin: 100rem;
-  justify-content: center; /*centra a lo horizontal*/
+  justify-content: center;
 }
 
 .text-izq{
@@ -191,6 +178,10 @@ nav{
   height: 50vh;
 }
 
+.text-container-sds {
+  margin: 16rem;
+}
+
 .img-sup-der {
   display: flex;
   flex-direction: column;
@@ -209,11 +200,11 @@ nav{
 
 #sobre-mi {
   text-align: right;
-  margin-left: -30rem;
+  margin-left: 128rem;
 }
 
 .right { 
-  justify-content: right; 
+  justify-content: right;
 }
 
 .center {
@@ -229,18 +220,21 @@ nav{
   height: 50vh;
 }
 
+.text-container-sdi {
+  margin: 16rem;
+}
+
 .button {
   margin-top: 30rem;
   display: flex;
-  /* justify-content: center; */
 }
 
 .boton {
-  border: var(--white) solid 1rem;
+  border: var(--white) solid 1.5rem;
   border-radius: 25rem;
   background: transparent;
   color: var(--white);
-  font-size: 14rem;
+  font-size: var(--sm);
   font-weight: bold;
   padding: 8rem 20rem;
 }
@@ -268,6 +262,7 @@ nav{
 
 .contacto img {
   width: 64rem;
+  margin-top: 8rem;
 }
 
 /*MEDIO*/
@@ -299,31 +294,78 @@ nav{
 /*PROYECTOS*/
 .proyectos {
   height: 100vh;
-  background: #f7f8fb;
+  background: var(--gris-claro);
 }
 
 @media (max-width: 1080px) {
+
+  h1 {
+    font-size: 28rem;
+  }
+
+  h2 {
+    font-size: 20rem;
+  }
+
   .seccion-superior{
     display: grid;
+    margin: 0;
+    width: 100%;
   }
   .columna-izq-superior{
-    width: 100vw;
+    width: 100%
   }
+
+    .text-container-si{
+    margin: 64px;
+    justify-content: center;
+  }
+
+  .text-izq{
+    padding: 10rem;
+    border: var(--white) solid 2rem;
+    }
+
   .columna-der-superior{
     width: 100vw;
   }
+
+  .img-sup-der img {
+    width: 400px;
+  }
+
+  .contacto{
+    flex-wrap: wrap;
+  }
+
   .seccion-media > div {
-    display: grid;
-    width: 100vw;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
  }
 
- .titulo {
-  width: 80vw;
-}
+ .contenido-medio {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+ }
+
+ .titulo-tecnologia {
+  margin: 0;
+ }
+
+ .tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50vw;
+ }
   
 .tecnologias img {
-  width: 128px;
-  justify-content: center;
+  width: 64px;
+}
+
+.proyectos {
+  width: 100%;
 }
 
 }
