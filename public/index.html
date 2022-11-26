@@ -11,10 +11,27 @@
 <body>
     <div id="main">
         <header>
-            <nav class="menu">
+            <nav class="menu closer">
                 <img src="../src/assets/images/menu-inactivo.png" alt="" class="alternar menu" >
                 <img src="../src/assets/images/menu-activo.png" alt="" class="alternar menu inactive" >
             </nav>
+            <div class="menu-display closer inactive">
+                <div class="menu-display-text closer inactive">
+                    <div class="menu-close closer inactive">
+                        <img src="../src/assets/images/menu-close.png" alt="">
+                    </div>
+                    <div class="menu-container closer">
+                        <ul>
+                            <li><h2>About Me</h2></li>
+                            <li><h2><a href="#tecnologia">Technologies</a></h2></li>
+                            <li><h2><a href="#proyectos">Projects</a></h2></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="menu-display-img">
+                    <img src="../src/assets/images/menu-display.png">
+                </div>
+            </div>
         </header>
         <section class="seccion-superior">
             <div class="columna-izq-superior">
@@ -35,7 +52,6 @@
                             <button class="conocer-mas boton">Know more</button>
                         </div>
                     </div>
-
                 </div>
                 <div class="columna-der-superior-botton">
                     <div class="text-container-sdi">
@@ -59,11 +75,9 @@
                         <button class="cv boton">Donwload CV</button>
                     </div>
                 </div>
-
             </div>
         </section>
-        <main class="seccion-media">
-            
+        <main class="seccion-media" id="tecnologia">
                 <div class="titulo-tecnologia">
                     <h2>Technologies and tools that I use</h2>
                 </div>
@@ -81,13 +95,61 @@
                     <!-- <img src="../src/assets/images/angular.png" alt="angular"> -->
                     <img src="../src/assets/images/google.png" alt="google">
                 </figure>
-           
         </main>
-        <section class="proyectos">
+        <section class="proyectos" id="proyectos">
             <div class="titulo-proyectos">
                 <h2>Projects</h2>
             </div>
             <div class="cards-container">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="front card-1">
+                            <div class="card-1">
+                                <h2 class="card-1-text">Welcome to Haikel Mustafa's portfolio!</h2>
+                                <p id="card-1-fronted">Front-end programmer</p>
+                            </div>   
+                        </div>
+                        <div class="back">
+                            <h2>Portfolio</h2>
+                            <hr>
+                            <p>Texto de prueba, aqui van cosas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="front card-2">
+                            <div class="card-2">
+                                <h1>Search GIFS<p><strong>Powered by Giphy</strong></p></h1> 
+                                <input type="text" name="" id="app-search" placeholder="Search Gifs">
+                            </div>
+                        </div>
+                        <div class="back">
+                            <h2>Search GIFS</h2>
+                            <hr>
+                            <div class="text-card">
+                                <p>Respuesta al reto de PLATZI de hacer un buscador de gifs usando la API de Giphy y que de resultados a paritr de ingresar tres letras o más en el buscador.</p>
+                            </div>
+                            <div class="button center">
+                                <button onclick="location.href='giphy.html'" class="boton btn-giphy">Ir a la Web</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="front">
+                            <h2>Front</h2>
+                            <hr>
+                            <p>Probando 1,2,3</p>
+                        </div>
+                        <div class="back">
+                            <h2>Back</h2>
+                            <hr>
+                            <p>Texto de prueba, aqui van cosas</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-container">
                     <div class="card">
                         <div class="front">
@@ -132,7 +194,6 @@
                     </div>
                 </div>
             </div>
-        </section>
     </div>
     
 </body>
