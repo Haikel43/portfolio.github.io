@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/styles/main.css" type="text/css">
+    <script src="../src/playlist.js" defer></script>
+    <title>Music Search</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+        <div class="search-box">
+            <input type="text" name="" id="search-music" placeholder="Search Music" required>
+            <input type="submit" value="buscar" id="btn-srch">
+        </div>
+        <div class="search-options">
+            <div>
+                <input type="radio" name="type-search" value="artists" id="searchChoice1" required><label for="searchChoice1">Artist</label>
+                <input type="radio" name="type-search" value="albums" id="searchChoice2" ><label for="searchChoice2">Album</label>
+                <input type="radio" name="type-search" value="tracks" id="searchChoice3"><label for="searchChoice3">Track</label>
+            </div>
+        </div>
+    </fieldset>
+    </form>
+    <div>
+        <p>Aqui van las opciones de desplegado</p>
+    </div>
+    <div id="content">
+        <p>Aqui van los resultados</p>
+    </div>
+
+</body>
+</html>

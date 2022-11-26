@@ -1,4 +1,3 @@
-// import fetch from "node-fetch";
 const API = 'https://api.giphy.com/v1/gifs';
 const apiKey = 'cHMw81ECLSsZ7Xb17ZAWJLGBHG543m5t';
 const content = null || document.getElementById('content');
@@ -6,8 +5,10 @@ const content = null || document.getElementById('content');
 document.getElementById('app-search').oninput = giphySearch;
 
 
-function peticionUrl(search) {
-    const urlBusqueda = `${API}/search?api_key=${apiKey}&q=${search}&limit=25&rating=g&lang=es`
+function requestUrl(search) {
+    const urlPre = `${API}/search?api_key=${apiKey}&q=${search}&limit=25&rating=g&lang=es`;
+    const urlBusqueda = urlPre.replaceAll(' ', '+');
+    console.log(urlBusqueda);
     return urlBusqueda;
 }
 
@@ -35,7 +36,7 @@ async function fetchData(urlApi) {
 async function giphySearch(e) {
     let search = e.target.value;
     if (search.length > 2) {
-        const urlSearch = peticionUrl(search);
+        const urlSearch = requestUrl(search);
         const imageSearch = await fetchData(urlSearch);
         let view = `${imageSearch.data.map(image => 
             `
