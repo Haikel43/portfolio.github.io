@@ -1,0 +1,136 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--light-gray);
+}
+
+form {
+    padding: 36rem 32rem 32rem 32rem;
+    background: linear-gradient(var(--purple),#8D52FC); 
+    border-bottom-left-radius: 180rem;
+    border-bottom-right-radius: 180rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+}
+
+
+fieldset {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.search-options {
+    display: flex;
+    justify-content: center;
+}
+
+
+.search-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75vw;
+}
+
+.search-container{
+    width: 90%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+#search-music {
+    position: absolute;
+    width: 100%;
+    height: 36px;
+    padding: 8rem 20rem;
+    border: 1rem solid var(--white);
+    border-radius: 5rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background: var(--white);
+    font-size: 12rem;
+    top: 16rem;
+    color: var(--gray);
+    padding-right: 45px;
+}
+
+#search-music:focus-visible{
+    border: 1rem solid var(--white);
+    outline: 0rem solid transparent;
+}
+
+.icon {
+    position: absolute;
+    background: transparent;
+    top: 8rem;
+    margin-top: 16px;
+    right: 5%;
+    color: var(--purple);
+}
+
+.view-options{
+    margin-top: 32rem;
+}
+
+.view-options img{
+    width: 32rem;
+    margin: 0rem 16rem 0rem;
+}
+
+.container{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16rem;
+}
+
+#content {
+
+}
+
+#content img {
+    /* width: 98px; */
+    border-radius: 5rem;
+    margin: 2rem 4rem;
+    align-items: center;
+} 
+
+.artist img{
+    width: 256px;
+    height: 256px;
+}
+
+.album img{
+    width: 92px;
+    height: 92px;
+}
+
+.track-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.track-box img{
+    width: 80px;
+}
+
+.track-info{
+    font-size: 12rem;
+}
+
+.listMode {
+    display: flex;
+    color: blue;
+}
+
+.gridMode {
+    display: grid;
+    color: red;
+}

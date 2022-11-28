@@ -5,31 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/styles/main.css" type="text/css">
+    <link rel="stylesheet" href="../src/styles/playlist.css" type="text/css">
     <script src="../src/playlist.js" defer></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Music Search</title>
 </head>
 <body>
     <form>
-        <fieldset>
-        <div class="search-box">
-            <input type="text" name="" id="search-music" placeholder="Search Music" required>
-            <input type="submit" value="buscar" id="btn-srch">
+        <div id="tittle">
+            <h2>Search Music</h2>
         </div>
+        
+        <fieldset>
         <div class="search-options">
-            <div>
                 <input type="radio" name="type-search" value="artists" id="searchChoice1" required><label for="searchChoice1">Artist</label>
                 <input type="radio" name="type-search" value="albums" id="searchChoice2" ><label for="searchChoice2">Album</label>
                 <input type="radio" name="type-search" value="tracks" id="searchChoice3"><label for="searchChoice3">Track</label>
+        </div>
+        <div class="search-box">
+            <div class="search-container">
+                <input type="text" name="" id="search-music" placeholder="Search Music" autocomplete="off" required>
+                <span class="icon"><i class="fa fa-search"></i></span>
             </div>
         </div>
     </fieldset>
     </form>
-    <div>
-        <p>Aqui van las opciones de desplegado</p>
+    <div class="view-options">
+        <img src="../src/assets/images/grid.png" alt="" id="op1" class="alternar inactive">
+        <img src="../src/assets/images/grid-inactive.png" alt="" class="alternar">
+        <img src="../src/assets/images/list.png" alt="" id="op2" class="alternar inactive">
+        <img src="../src/assets/images/list-inactive.png" alt="" class="alternar">
+        <img src="../src/assets/images/list-only.png" alt="" id="op3" class="alternar inactive">
+        <img src="../src/assets/images/list-only-inactive.png" alt="" class="alternar">
     </div>
-    <div id="content">
-        <p>Aqui van los resultados</p>
+    <div class="container">
+        <div id="content" class="gridMode">
+        </div>
     </div>
-
 </body>
 </html>
