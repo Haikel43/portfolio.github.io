@@ -11,35 +11,37 @@
     <title>Music Search</title>
 </head>
 <body>
-    <form>
-        <div id="tittle">
-            <h2>Search Music</h2>
-        </div>
-        
-        <fieldset>
-        <div class="search-options">
-                <input type="radio" name="type-search" value="artists" id="searchChoice1" required><label for="searchChoice1">Artist</label>
-                <input type="radio" name="type-search" value="albums" id="searchChoice2" ><label for="searchChoice2">Album</label>
-                <input type="radio" name="type-search" value="tracks" id="searchChoice3"><label for="searchChoice3">Track</label>
-        </div>
-        <div class="search-box">
-            <div class="search-container">
-                <input type="text" name="" id="search-music" placeholder="Search Music" autocomplete="off" required>
-                <span class="icon"><i class="fa fa-search"></i></span>
+    <div id="body">
+        <form>
+            <div id="tittle">
+                <h2>Search Music</h2>
             </div>
+            
+            <fieldset>
+            <div class="search-options">
+                    <input type="radio" name="type-search" value="artists" id="searchChoice1" required><label for="searchChoice1">Artist</label>
+                    <input type="radio" name="type-search" value="albums" id="searchChoice2" ><label for="searchChoice2">Album</label>
+                    <input type="radio" name="type-search" value="tracks" id="searchChoice3"><label for="searchChoice3">Track</label>
+            </div>
+            <div class="search-box">
+                <div class="search-container">
+                    <input type="text" name="" id="search-music" placeholder="Search Music" autocomplete="off" required>
+                    <span class="icon"><img src="../src/assets/images/search.png" alt=""></i></span>
+                </div>
+            </div>
+        </fieldset>
+        </form>
+        <div class="view-options">
+            <img src="../src/assets/images/grid.png" alt="" class="alternar inactive">
+            <img src="../src/assets/images/grid-inactive.png" alt="" id="op1" class="alternar">
+            <img src="../src/assets/images/list.png" alt="" class="alternar inactive">
+            <img src="../src/assets/images/list-inactive.png" alt="" id="op2" class="alternar">
+            <img src="../src/assets/images/list-only.png" alt="" class="alternar inactive">
+            <img src="../src/assets/images/list-only-inactive.png" alt="" id="op3" class="alternar">
         </div>
-    </fieldset>
-    </form>
-    <div class="view-options">
-        <img src="../src/assets/images/grid.png" alt="" id="op1" class="alternar inactive">
-        <img src="../src/assets/images/grid-inactive.png" alt="" class="alternar">
-        <img src="../src/assets/images/list.png" alt="" id="op2" class="alternar inactive">
-        <img src="../src/assets/images/list-inactive.png" alt="" class="alternar">
-        <img src="../src/assets/images/list-only.png" alt="" id="op3" class="alternar inactive">
-        <img src="../src/assets/images/list-only-inactive.png" alt="" class="alternar">
-    </div>
-    <div class="container">
-        <div id="content" class="gridMode">
+        <div class="container">
+            <div id="content" class="gridMode">
+            </div>
         </div>
     </div>
 </body>

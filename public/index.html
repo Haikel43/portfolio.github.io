@@ -138,15 +138,40 @@
                 </div>
                 <div class="card-container">
                     <div class="card">
-                        <div class="front">
-                            <h2>Front</h2>
-                            <hr>
-                            <p>Probando 1,2,3</p>
+                        <div class="front card-3">
+                            <form>
+                                <div id="tittle">
+                                    <h1>Search Music</h1>
+                                </div>
+                                <fieldset>
+                                    <div class="search-options">
+                                            <input type="radio" name="type-search" value="artists" id="searchChoice1" required><label for="searchChoice1">Artist</label>
+                                            <input type="radio" name="type-search" value="albums" id="searchChoice2" ><label for="searchChoice2">Album</label>
+                                            <input type="radio" name="type-search" value="tracks" id="searchChoice3"><label for="searchChoice3">Track</label>
+                                    </div>
+                                    <div class="search-box">
+                                        <div class="search-container">
+                                            <input type="text" name="" id="search-music" placeholder="Search Music" autocomplete="off" required>
+                                            <span class="icon"><img src="../src/assets/images/search.png" alt=""></i></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <div class="view-options">
+                                <img src="../src/assets/images/grid.png" alt="" class="">
+                                <img src="../src/assets/images/list-inactive.png" alt="" class="">
+                                <img src="../src/assets/images/list-only-inactive.png" alt="" class="">
+                            </div>
                         </div>
                         <div class="back">
-                            <h2>Back</h2>
+                            <h2>Search GIFS</h2>
                             <hr>
-                            <p>Texto de prueba, aqui van cosas</p>
+                            <div class="text-card">
+                                <p>Respuesta al reto de PLATZI de hacer un buscador de gifs usando la API de Giphy y que de resultados a paritr de ingresar tres letras o más en el buscador.</p>
+                            </div>
+                            <div class="button center">
+                                <button onclick="location.href='playlist.html'" class="boton btn-giphy">Ir a la Web</button>
+                            </div>
                         </div>
                     </div>
                 </div>

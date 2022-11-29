@@ -1,8 +1,9 @@
-body {
+#body {
     display: flex;
     flex-direction: column;
     align-items: center;
     background: var(--light-gray);
+    height: 100vh;
 }
 
 form {
@@ -37,7 +38,7 @@ fieldset {
 }
 
 .search-container{
-    width: 90%;
+    width: 100%;
     display: flex;
     position: relative;
     justify-content: center;
@@ -72,6 +73,10 @@ fieldset {
     color: var(--purple);
 }
 
+.icon img {
+    width: 12rem;
+}
+
 .view-options{
     margin-top: 32rem;
 }
@@ -94,9 +99,7 @@ fieldset {
 }
 
 #content img {
-    /* width: 98px; */
     border-radius: 5rem;
-    margin: 2rem 4rem;
     align-items: center;
 } 
 
@@ -106,15 +109,24 @@ fieldset {
 }
 
 .album img{
-    width: 92px;
-    height: 92px;
+    width: 256px;
+    height: 256px;
 }
 
 .track-box{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
+.albums {
+    display: flex;
+    align-items: center;
+    margin: 4rem 4rem 0 4rem;
+}
+
+.albums img{
+    width: 96rem;
 }
 
 .track-box img{
@@ -125,12 +137,23 @@ fieldset {
     font-size: 12rem;
 }
 
-.listMode {
-    display: flex;
-    color: blue;
-}
-
 .gridMode {
     display: grid;
-    color: red;
+}
+
+.three-columns {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.three-columns p{
+    font-size: 14rem;
+}
+
+.listMode {
+    display: flex;
+    flex-direction: column;
+}
+
+#content .list {
+    width: 72rem;
 }

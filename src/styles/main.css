@@ -478,6 +478,86 @@ body::-webkit-scrollbar-thumb {
   font-weight: bold;
 }
 
+.card-3 {
+  background: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.card-3 form{
+  padding: 32rem;
+  background: linear-gradient(var(--purple),#8D52FC); 
+  border-bottom-left-radius: 180rem;
+  border-bottom-right-radius: 180rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+}
+
+.card-3 fieldset {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.card-3 .search-options {
+  display: flex;
+  justify-content: center;
+}
+
+.card-3 .search-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card-3 .search-container{
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.card-3 #search-music {
+  position: absolute;
+  width: 150%;
+  height: 36px;
+  padding: 8rem 20rem;
+  border: 1rem solid var(--white);
+  border-radius: 5rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background: var(--white);
+  font-size: 12rem;
+  top: 16rem;
+  color: var(--gray);
+  padding-right: 45px;
+}
+
+.card-3 .icon img {
+  width: 12px;
+}
+
+.card-3 .icon {
+  position: absolute;
+  background: transparent;
+  top: 8rem;
+  margin-top: 16px;
+  right: 5%;
+  color: var(--purple);
+}
+
+.card-3 .view-options{
+  margin-top: 32rem;
+}
+
+.card-3 .view-options img{
+  width: 32rem;
+  margin: 0rem 16rem 0rem;
+}
 
 @media (min-width:768px) {
   .columna-izq-superior{
@@ -503,13 +583,12 @@ body::-webkit-scrollbar-thumb {
   }
 
   .cards-container {
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .card-container{
-    width: 47.5%;
+    width: 97%;
     margin: 0px 12px 12px 12px;
   }
 }
@@ -580,7 +659,7 @@ body::-webkit-scrollbar-thumb {
   }
 
   .card-container{
-    width: 95%;
+    width: 97.5%;
     margin: 0px 0px 12px 12px;
   }
   

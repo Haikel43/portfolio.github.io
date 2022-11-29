@@ -1,12 +1,8 @@
-//Artista, album,track
 const API = 'https://spotify23.p.rapidapi.com/';
 const content = null || document.getElementById('content');
 const searchText = document.getElementById('search-music');
-const option1 = document.getElementById('searchChoice1');
 const form = document.querySelector('form');
 let typeSearch;
-
-document.querySelector('.icon').onclick = submitSearch
 
 const options = {
 	method: 'GET',
@@ -18,6 +14,8 @@ const options = {
 
 function submitSearch(event) {
     const data = new FormData(form);
+    content.classList.add('gridMode');
+    content.classList.remove('listMode', 'three-columns');
     for (const entry of data) {
         typeSearch = `${entry[1]}`;
     }
@@ -37,29 +35,33 @@ async function fetchData(urlApi, options) {
     return data;
 }
 
+function controlDisplay(class1, class2) {
+    document.getElementById('content').className = '';
+    content.classList.add(class1, class2);
+}
+
 async function viewResults() {
     try {
         let textRequest = searchText.value;
         const urlRequest = requestUrl(textRequest, typeSearch);
         const dataRequest = await fetchData(urlRequest, options);
-        console.log(dataRequest);
         let view;
-  
         switch (typeSearch) {
             case 'artists':
                 const artistId = dataRequest.artists.items[0].data.uri.replace('spotify:artist:', '');
+                console.log(dataRequest);
+                controlDisplay('gridMode', 'artist');
                 view = `${dataRequest.artists.items.map(artist => 
                     `
                     <div class="artist">
                         <img src="${artist.data.visuals.avatarImage.sources[0].url}" alt="">
+                        <p class="p inactive>${artist.data.profile.name}</p>
                     </div>
                     `).join('')}`;
                 content.innerHTML = view;
-                content.classList.add('listMode');
-                content.classList.remove('gridMode')
                 document.querySelector('.artist').onclick = openArtist;
                 function openArtist() {
-                    lookArtist(artistId);
+                lookArtist(artistId);
                 } 
                 break;
             case 'albums':
@@ -68,6 +70,8 @@ async function viewResults() {
                 view = `
                     <div class="album">
                         <img src="${dataRequest.albums.items[0].data.coverArt.sources[0].url}" alt="">
+                        <p class="p inactive>Album: ${dataRequest.albums.items[0].data.name}</p>
+                        <p class="p inactive> Year: ${dataRequest.albums.items[0].data.date.year} </p>
                     </div>
                     `
                 content.innerHTML = view;
@@ -91,12 +95,17 @@ async function viewResults() {
 async function lookAlbum(id) {
     const albumTracksUrl = `${API}album_tracks/?id=${id}&offset=0&limit=300`;
     const albumTracksRequest = await fetchData(albumTracksUrl, options);
+    console.log(albumTracksRequest);
     view = `
         ${albumTracksRequest.data.album.tracks.items.map(track => 
         `
             <div class="track-box">
-                <img src="../src/assets/images/music.png" alt="">
-                <p class="track-info">${track.track.trackNumber} - ${track.track.name}</p>
+                <div>
+                    <img src="../src/assets/images/music.png" alt="">
+                </div>    
+                <div>
+                    <p class="p track-info">${track.track.trackNumber} - ${track.track.name}</p>
+                </div>
             </div>
         `).join('')}`;
     content.innerHTML = view;
@@ -105,17 +114,23 @@ async function lookAlbum(id) {
 async function lookArtist(id) {
     const artistAlbumsUrl = `${API}artist_albums/?id=${id}&offset=0&limit=100`;
     const artistAlbumsRequest = await fetchData(artistAlbumsUrl, options);
+    controlDisplay('gridMode', 'three-columns');
     console.log(artistAlbumsRequest);
     view = `
     ${artistAlbumsRequest.data.artist.discography.albums.items.map(album=> 
     `
-        <div id="${album.releases.items[0].id}" class="album">
-            <img src="${album.releases.items[0].coverArt.sources[0].url}" alt="">
+        <div id="${album.releases.items[0].id}" class="albums">
+            <div>
+                <img src="${album.releases.items[0].coverArt.sources[0].url}" alt="">
+            </div>
+            <div>
+                <p class="p inactive">Album: ${album.releases.items[0].name}</p>
+                <p class="p inactive">Year: ${album.releases.items[0].date.year}</p>
+                <p class="p inactive">Tracks: ${album.releases.items[0].tracks.totalCount}</p>
+            </div>
         </div>
     `).join('')}`;
     content.innerHTML = view;
-    content.classList.remove('listMode');
-    content.classList.add('gridMode');
     artistAlbumsRequest.data.artist.discography.albums.items.map(
     album => {
         const albumId = `${album.releases.items[0].id}`;
@@ -126,6 +141,11 @@ async function lookArtist(id) {
         }
     )
 }
+
+document.querySelector('.icon').onclick = submitSearch;
+document.querySelector('form').onsubmit = submitSearch;
+
+//SELECTOR DE OPCIONES
 
 const alternar = document.querySelectorAll('.alternar');
 const alternarToArray = Array.apply(null, alternar);
@@ -166,3 +186,45 @@ function toggle(arr) {
 }
 
 altenarImagen(alternarToArray);
+
+//DISPLAY OPTIONS
+
+const displayGrid = () => {
+    console.log('esto es una grid');
+    content.classList.remove('listMode');
+    content.classList.add('gridMode')
+}
+
+const displayList = () => {
+    if (content.classList.contains('artist') == false ){
+        content.classList.add('listMode');
+        content.classList.remove('gridMode');
+        const p = document.querySelectorAll('p');
+        const pArray = Array.apply(null,p);
+        pArray.forEach(p => {
+            p.classList.remove('inactive')
+        });
+        const i = document.querySelectorAll('#content img');
+        const iToArray = Array.apply(null, i);
+        iToArray.forEach(i => {
+            i.classList.add('list');
+            i.classList.remove('inactive');
+        })
+    }
+}
+
+const displayListOnly = () => {
+    if (content.classList.contains('artist') == false){
+        if (content.classList.contains('listMode') == true) {
+            const i = document.querySelectorAll('#content img');
+            const iToArray = Array.apply(null, i);
+            iToArray.forEach(i => {
+                i.classList.add('list', 'inactive');
+            })
+        }
+    }
+}
+
+document.getElementById('op1').onclick = displayGrid;
+document.getElementById('op2').onclick = displayList;
+document.getElementById('op3').onclick = displayListOnly;
