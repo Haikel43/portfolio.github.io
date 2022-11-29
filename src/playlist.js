@@ -1,4 +1,4 @@
-const API = 'https://spotify23.p.rapidapi.com/';
+const API = 'https://spotify81.p.rapidapi.com/';
 const content = null || document.getElementById('content');
 const searchText = document.getElementById('search-music');
 const form = document.querySelector('form');
@@ -8,14 +8,12 @@ const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '04fa129d7emsh4e3cea0bb001a4bp11a481jsnc2c82cef223c',
-		'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+		'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
 	}
 };
 
 function submitSearch(event) {
     const data = new FormData(form);
-    content.classList.add('gridMode');
-    content.classList.remove('listMode', 'three-columns');
     for (const entry of data) {
         typeSearch = `${entry[1]}`;
     }
@@ -24,7 +22,7 @@ function submitSearch(event) {
   }
 
 function requestUrl(search, searchOptions ) {
-    const urlPre = `${API}search/?q=${search}&type=${searchOptions}&offset=0&limit=1&numberOfTopResults=5`;
+    const urlPre = `${API}search?q=${search}&type=${searchOptions}&offset=0&limit=1&numberOfTopResults=5`;
     const urlSearch = urlPre.replaceAll(' ', '%20');
     return urlSearch;
 }
@@ -35,9 +33,9 @@ async function fetchData(urlApi, options) {
     return data;
 }
 
-function controlDisplay(class1, class2) {
+function controlDisplay(display, format, view) {
     document.getElementById('content').className = '';
-    content.classList.add(class1, class2);
+    content.classList.add(display, format, view);
 }
 
 async function viewResults() {
@@ -50,38 +48,47 @@ async function viewResults() {
             case 'artists':
                 const artistId = dataRequest.artists.items[0].data.uri.replace('spotify:artist:', '');
                 console.log(dataRequest);
-                controlDisplay('gridMode', 'artist');
+                controlDisplay('gridMode', 'full','artist');
                 view = `${dataRequest.artists.items.map(artist => 
                     `
-                    <div class="artist">
+                    <div class="artista">
                         <img src="${artist.data.visuals.avatarImage.sources[0].url}" alt="">
                         <p class="p inactive>${artist.data.profile.name}</p>
                     </div>
                     `).join('')}`;
                 content.innerHTML = view;
-                document.querySelector('.artist').onclick = openArtist;
+                document.querySelector('.artista').onclick = openArtist;
                 function openArtist() {
                 lookArtist(artistId);
                 } 
                 break;
             case 'albums':
                 console.log(dataRequest);
+                controlDisplay('gridMode', 'full', 'album');
                 const albumId = dataRequest.albums.items[0].data.uri.replace('spotify:album:', '');
                 view = `
-                    <div class="album">
+                    <div class="disc">
                         <img src="${dataRequest.albums.items[0].data.coverArt.sources[0].url}" alt="">
                         <p class="p inactive>Album: ${dataRequest.albums.items[0].data.name}</p>
                         <p class="p inactive> Year: ${dataRequest.albums.items[0].data.date.year} </p>
                     </div>
-                    `
+                    `;
                 content.innerHTML = view;
-                document.querySelector('.album').onclick = openAlbum;
+                document.querySelector('.disc').onclick = openAlbum;
                 function openAlbum() {
                     lookAlbum(albumId);
                 }
                 break;
             case 'tracks':
-                console.log('es una cancion');
+                console.log(dataRequest);
+
+                view = `
+                <div class="disc">
+                    <img src="${dataRequest.tracks[0].data.albumOfTrack.coverArt.sources[0].url}" alt="">
+                    <p class="p inactive>Album: ${dataRequest.albums.items[0].data.name}</p>
+                    <p class="p inactive> Year: ${dataRequest.albums.items[0].data.date.year} </p>
+                </div>
+                `;
             break;
             default:
                 break;
@@ -93,8 +100,9 @@ async function viewResults() {
 }
 
 async function lookAlbum(id) {
-    const albumTracksUrl = `${API}album_tracks/?id=${id}&offset=0&limit=300`;
+    const albumTracksUrl = `${API}album_tracks?id=${id}&offset=0&limit=300`;
     const albumTracksRequest = await fetchData(albumTracksUrl, options);
+    controlDisplay('gridMode', 'three-columns', 'tracks');
     console.log(albumTracksRequest);
     view = `
         ${albumTracksRequest.data.album.tracks.items.map(track => 
@@ -112,9 +120,9 @@ async function lookAlbum(id) {
 }
 
 async function lookArtist(id) {
-    const artistAlbumsUrl = `${API}artist_albums/?id=${id}&offset=0&limit=100`;
+    const artistAlbumsUrl = `${API}artist_albums?id=${id}&offset=0&limit=100`;
     const artistAlbumsRequest = await fetchData(artistAlbumsUrl, options);
-    controlDisplay('gridMode', 'three-columns');
+    controlDisplay('gridMode', 'three-columns', 'albums');
     console.log(artistAlbumsRequest);
     view = `
     ${artistAlbumsRequest.data.artist.discography.albums.items.map(album=> 
@@ -123,7 +131,7 @@ async function lookArtist(id) {
             <div>
                 <img src="${album.releases.items[0].coverArt.sources[0].url}" alt="">
             </div>
-            <div>
+            <div class="albums-info">
                 <p class="p inactive">Album: ${album.releases.items[0].name}</p>
                 <p class="p inactive">Year: ${album.releases.items[0].date.year}</p>
                 <p class="p inactive">Tracks: ${album.releases.items[0].tracks.totalCount}</p>
@@ -132,15 +140,17 @@ async function lookArtist(id) {
     `).join('')}`;
     content.innerHTML = view;
     artistAlbumsRequest.data.artist.discography.albums.items.map(
-    album => {
-        const albumId = `${album.releases.items[0].id}`;
-        document.getElementById(albumId).onclick = openAlbum;          
-        function openAlbum() {
-            lookAlbum(albumId);
+        album => {
+            const albumId = `${album.releases.items[0].id}`;
+            document.getElementById(albumId).onclick = openAlbum;          
+            function openAlbum() {
+                lookAlbum(albumId);
+                }
             }
-        }
-    )
+        );
 }
+
+
 
 document.querySelector('.icon').onclick = submitSearch;
 document.querySelector('form').onsubmit = submitSearch;
@@ -187,44 +197,47 @@ function toggle(arr) {
 
 altenarImagen(alternarToArray);
 
-//DISPLAY OPTIONS
+// DISPLAY OPTIONS
 
 const displayGrid = () => {
     console.log('esto es una grid');
-    content.classList.remove('listMode');
-    content.classList.add('gridMode')
-}
-
-const displayList = () => {
-    if (content.classList.contains('artist') == false ){
-        content.classList.add('listMode');
-        content.classList.remove('gridMode');
-        const p = document.querySelectorAll('p');
-        const pArray = Array.apply(null,p);
-        pArray.forEach(p => {
-            p.classList.remove('inactive')
-        });
-        const i = document.querySelectorAll('#content img');
-        const iToArray = Array.apply(null, i);
-        iToArray.forEach(i => {
-            i.classList.add('list');
-            i.classList.remove('inactive');
-        })
-    }
-}
-
-const displayListOnly = () => {
-    if (content.classList.contains('artist') == false){
-        if (content.classList.contains('listMode') == true) {
-            const i = document.querySelectorAll('#content img');
-            const iToArray = Array.apply(null, i);
-            iToArray.forEach(i => {
-                i.classList.add('list', 'inactive');
-            })
+    if (content.classList.contains('artist') == false && content.classList.contains('album') == false) { 
+        if (content.classList.contains('albums') == true) {
+            controlDisplay('gridMode', 'three-columns', 'albums');
+            const p = document.querySelectorAll('p');
+            const pArray = Array.apply(null,p);
+            pArray.forEach(p => {
+                p.classList.add('inactive')
+            });
+        } else {
+            controlDisplay('gridMode', 'three-columns', 'tracks');
         }
     }
 }
 
+const displayList = () => {
+    if (content.classList.contains('artist') == false && content.classList.contains('album') == false){
+        if (content.classList.contains('albums') == true) {
+            controlDisplay('listMode', 'three-columns', 'albums');
+            const p = document.querySelectorAll('p');
+            const pArray = Array.apply(null,p);
+            pArray.forEach(p => {
+                p.classList.remove('inactive')
+            });
+        } else {
+            controlDisplay('listMode', 'three-columns', 'tracks');
+            const p = document.querySelectorAll('p');
+            const pArray = Array.apply(null,p);
+            pArray.forEach(p => {
+                p.classList.remove('inactive')
+            });
+        }
+        
+        
+
+    }
+}
+
+
 document.getElementById('op1').onclick = displayGrid;
 document.getElementById('op2').onclick = displayList;
-document.getElementById('op3').onclick = displayListOnly;

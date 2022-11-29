@@ -94,47 +94,60 @@ fieldset {
     margin-top: 16rem;
 }
 
-#content {
-
-}
-
 #content img {
     border-radius: 5rem;
     align-items: center;
 } 
 
-.artist img{
+.full img{
     width: 256px;
     height: 256px;
 }
 
-.album img{
-    width: 256px;
-    height: 256px;
-}
-
-.track-box{
+.gridMode .track-box{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .albums {
-    display: flex;
-    align-items: center;
     margin: 4rem 4rem 0 4rem;
+}
+
+.listMode .albums {
+    display: flex;
+    align-items: center;    
 }
 
 .albums img{
     width: 96rem;
 }
 
+.listMode .albums-info {
+    padding-left: 8rem;
+}
+
+.gridMode .track-box p {
+    text-align: center;
+    padding: 4rem;
+}
+
 .track-box img{
-    width: 80px;
+    width: 64px;
+}
+
+.listMode .track-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.listMode .track-box img {
+    margin-right: 16rem ;
 }
 
 .track-info{
-    font-size: 12rem;
+   font-size: 12rem;
 }
 
 .gridMode {
@@ -152,6 +165,7 @@ fieldset {
 .listMode {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 #content .list {
